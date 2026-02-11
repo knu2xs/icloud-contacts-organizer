@@ -6,10 +6,14 @@ title: Development Plan
 
 ## Overview
 
-This document outlines the comprehensive development plan for the iCloud Contacts Organizer project—a privacy-first, semi-assisted workflow for organizing macOS contacts using communication data from Messages and Mail.
+This document outlines the comprehensive development plan for the iCloud
+Contacts Organizer project—a privacy-first, semi-assisted workflow for
+organizing macOS contacts using communication data from Messages and Mail.
 
 !!! note "Project Philosophy"
-    This project prioritizes user privacy by extracting only metadata (participants, counts, recency) and never requiring message bodies unless explicitly enabled by the user.
+    This project prioritizes user privacy by extracting only metadata
+    (participants, counts, recency) and never requiring message bodies
+    unless explicitly enabled by the user.
 
 ## Project Phases
 
@@ -596,26 +600,26 @@ graph TB
 
 ### Data Flow
 
-1.  **Extraction**: Raw data → Interim JSON files
-2.  **Resolution**: Interim data → Unified identities
-3.  **Graph**: Identities → Relationship graph (DuckDB)
-4.  **Clustering**: Graph → Group candidates
-5.  **LLM**: Candidates → Named suggestions + rationale
-6.  **Report**: Suggestions → Excel workbook
-7.  **Review**: Human edits → Confirmed plan
-8.  **Export**: Confirmed plan → vCards + instructions
+1. **Extraction**: Raw data → Interim JSON files
+2. **Resolution**: Interim data → Unified identities
+3. **Graph**: Identities → Relationship graph (DuckDB)
+4. **Clustering**: Graph → Group candidates
+5. **LLM**: Candidates → Named suggestions + rationale
+6. **Report**: Suggestions → Excel workbook
+7. **Review**: Human edits → Confirmed plan
+8. **Export**: Confirmed plan → vCards + instructions
 
 ### Technology Stack
 
--   **Language:** Python 3.11+
--   **Data Processing:** DuckDB (primary), Pandas (reporting)
--   **Parsing:** sqlite3, mailbox, email, vobject/vcard
--   **Schemas:** Pydantic
--   **Configuration:** PyYAML
--   **Reporting:** openpyxl or xlsxwriter
--   **CLI:** argparse
--   **Testing:** pytest
--   **Documentation:** MkDocs with Material theme
+- **Language:** Python 3.11+
+- **Data Processing:** DuckDB (primary), Pandas (reporting)
+- **Parsing:** sqlite3, mailbox, email, vobject/vcard
+- **Schemas:** Pydantic
+- **Configuration:** PyYAML
+- **Reporting:** openpyxl or xlsxwriter
+- **CLI:** argparse
+- **Testing:** pytest
+- **Documentation:** MkDocs with Material theme
 
 ## Risk Management
 
@@ -711,7 +715,11 @@ graph TB
 ---
 
 !!! tip "Getting Started"
-    Begin by setting up the core logging and configuration utilities, then proceed to Phase 2 (Messages Extraction) as this provides the most value and is the foundation for other features.
+    Begin by setting up the core logging and configuration utilities, then
+    proceed to Phase 2 (Messages Extraction) as this provides the most value
+    and is the foundation for other features.
 
 !!! warning "Privacy First"
-    Remember: privacy-mode should be the default for all operations. Never extract message bodies unless explicitly requested with `--llm-full-context` flag.
+    Remember: privacy-mode should be the default for all operations. Never
+    extract message bodies unless explicitly requested with
+    `--llm-full-context` flag.
