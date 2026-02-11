@@ -59,6 +59,8 @@ docsrc/build/
 target/
 
 # configuration files
+**/secrets.yml
+**/secrets.yaml
 **/secrets.ini
 **/secrets.py
 .env
